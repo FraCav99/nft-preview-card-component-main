@@ -1,0 +1,161 @@
+:root {
+  --soft-blue: hsl(215, 51%, 70%);
+  --cyan: hsl(178, 100%, 50%);
+
+  --body-bg: hsl(217, 54%, 11%);
+  --card-bg-color: hsl(216, 50%, 16%);
+  --line-color: hsl(215, 32%, 27%);
+  --white: hsl(0, 0%, 100%);
+
+  --body-fs: 1.125rem;
+
+  --animation-duration: 300ms;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  line-height: 1.5;
+  color: var(--white);
+  background-color: var(--body-bg);
+  font-family: "Outfit", sans-serif;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+main {
+  display: grid;
+  place-items: center;
+  padding: 1em;
+}
+
+.card {
+  background-color: var(--card-bg-color);
+  padding: 1.5rem;
+  border-radius: 1em;
+  width: min(calc(100% - 0.5rem), 350px);
+  color: var(--soft-blue);
+}
+
+.card > * + * {
+  margin-top: 1.2rem;
+}
+
+.card-title,
+.author-name {
+  color: var(--white);
+  transition: color var(--animation-duration) ease-in;
+}
+
+.card-title:hover,
+.author-name:hover {
+  cursor: pointer;
+  color: var(--cyan);
+}
+
+.image-wrapper {
+  overflow: hidden;
+  border-radius: 0.625em;
+  transition: background-color var(--animation-duration) ease-in;
+  position: relative;
+}
+
+.image-wrapper:hover {
+  cursor: pointer;
+  background-color: var(--cyan);
+}
+
+.image-wrapper img {
+  transition: opacity var(--animation-duration) ease-in;
+}
+
+.image-wrapper:hover img {
+  opacity: 0.5;
+}
+
+.image-wrapper::before {
+  content: url("images/icon-view.svg");
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity var(--animation-duration) ease-in;
+}
+
+.image-wrapper:hover::before {
+  opacity: 1;
+}
+
+.description {
+  font-size: var(--body-fs);
+  font-weight: 300;
+}
+
+.nft-info,
+.author {
+  display: flex;
+  align-items: center;
+}
+
+.nft-info {
+  justify-content: space-between;
+}
+
+.nft-info > .price {
+  --_icon: url("images/icon-ethereum.svg");
+  font-weight: 600;
+  color: var(--cyan);
+}
+
+.nft-info > .time-left {
+  --_icon: url("images/icon-clock.svg");
+}
+
+.nft-info > *::before {
+  content: var(--_icon);
+  margin-right: 0.5rem;
+  display: inline;
+  vertical-align: middle;
+}
+
+.author {
+  border-top: 1px solid var(--line-color);
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.author > .author-pic {
+  width: 35px;
+  border: 1px solid var(--white);
+  border-radius: 100%;
+}
+
+.attribution {
+  font-size: 0.6875rem;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.attribution a {
+  color: var(--cyan);
+}
